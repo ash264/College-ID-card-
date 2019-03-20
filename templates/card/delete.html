@@ -1,0 +1,10 @@
+{%extends 'card/base.html'%}
+{%block content%}
+<head><title>Delete </title></head>
+<h1>Are you sure?</h1>
+<form method="POST">
+	{%csrf_token%}
+	<input type="submit" value="Delete">
+	
+</form>
+{%endblock%}

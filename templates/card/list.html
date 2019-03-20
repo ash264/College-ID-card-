@@ -1,0 +1,103 @@
+{%extends 'card/base.html'%}
+{% load staticfiles %}
+{% block active%}
+      <li><a href="{%url 'index'%}"><i class="fas fa-home"></i>&ensp; Home</a></li>
+      <li class="active"><a href="{%url 'list_student'%}"><i class="fas fa-graduation-cap"></i>&ensp; Student</a></li>
+      <li><a href="{%url 'list_employee'%}"><i class="fas fa-chalkboard-teacher"></i>&ensp;Faculty</a></li>
+      <li><a href="{%url 'add_new'%}"><i class="fa fa-address-card-o"></i>Register</a></li>
+      <li class="dropdown ">
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#">Visitor
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu ">
+          <li><a href="{%url 'visitor:register'%}">Add new</a></li>
+          <li><a href="{%url 'visitor:checkedin_list'%}">Checked In</a></li>
+          <li><a href="{%url 'visitor:list'%}">Checked Out</a></li>
+        </ul>
+      </li>
+
+
+    </ul>
+  {% endblock active %}
+{%block content%}
+<head>
+  <title>Student List</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <style>
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+  .row { margin: 0; padding: 0 }
+      * {
+          box-sizing: border-box;
+        }
+      
+  table {
+        width:100%;
+  }
+      
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+
+th, td {
+  padding: 10px;
+  text-align: centre;
+}
+table#mydata tr:nth-child(even) {
+  background-color: #eee;
+}
+table#mydata tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#mydata th {
+  opacity: 0.7;
+  background-color: black;
+  color: white;
+}
+      
+    </style>
+</head>
+<body>
+  <table class="table-bordered table table-hover" id="mydata">
+        <thead>
+            <tr>
+                <th>Roll No.</th>
+                <th>Name</th> 
+                <th>Programme</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+          {%for s in list%}
+    <tr>
+      <td><a href="{% url 'detail_student' s.roll_no%}">{{s.roll_no}}</a></td>
+      <td><a href="{% url 'detail_student' s.roll_no%}">{{s.name}}</a></td>
+      <td><a href="{% url 'detail_student' s.roll_no%}">{{s.programme}}</a></td>
+    </tr>
+  {%endfor%}
+  </tbody>
+    </table>
+    <script>
+        $('#mydata').dataTable();
+    </script>
+    <br/>
+    <br/>
+</body>  
+{% endblock %}

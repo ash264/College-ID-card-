@@ -1,0 +1,153 @@
+{%extends 'visitor/base.html'%}
+{%load static%}
+
+{%block content%}
+<head>
+  <title>{{visitor.name}}</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <style>
+      .card {
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+ max-width: 45%;
+ margin: auto;
+ text-align: center;
+ font-family: arial;
+}
+
+.title {
+ color: grey;
+ font-size: 18px;
+}
+
+/*a {
+ text-decoration: none;
+ font-size: 22px;
+ color: black;
+}*/
+
+button:hover, a:hover {
+ opacity: 0.7;
+ text-decoration: none;
+ color: #fff;
+}
+
+
+.btn-group button {
+ font-size: 18px;
+ background-color: #000; /* Green background */
+ border: 1px solid grey; /* Green border */
+ color: white; /* White text */
+ padding: 10px 24px; /* Some padding */
+ cursor: pointer; /* Pointer/hand icon */
+ float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+ content: "";
+ clear: both;
+ display: table;
+}
+
+.btn-group button:not(:last-child) {
+ border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+ opacity: 0.7;
+}
+
+      
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+      .row { margin: 0; padding: 0 }
+    </style>
+</head>
+  <div class="card" style="border-style: solid; border-color: black; border-width: 1px;border-radius: 4px;" >
+    <div id="print-card">
+       <img src="{{visitor.pic}}" alt="image not found" style="border-radius: 50%; margin-top: 3%; width:150px; height:150px; border-style: solid; border-color: black; border-width: 1px;" />
+       <h2 style="font-family: Times New Roman;">{{visitor.name}}</h2>
+       <div class="w3-container">
+         <table class="w3-table-all w3-hoverable tb1">
+           <tr>
+             <td>S/D/W/O: </td>
+             <td>{{visitor.name_2}}</td>
+           </tr>
+           <tr>
+             <td>Address: </td>
+             <td>{{visitor.address}}</td>
+           </tr>
+           <tr>
+             <td>ID Number: </td>
+             <td>{{visitor.id_no}}</td>
+           </tr>
+           <tr>
+             <td>ID Type: </td>
+             <td>{{visitor.id_type}}</td>
+           </tr>
+           <tr>
+             <td>Mobile Number: </td>
+             <td>{{visitor.mob}}</td>
+           </tr>
+           <tr>
+             <td>Email ID: </td>
+             <td>{{visitor.email}}</td>
+           </tr>
+           <tr>
+             <td>Vehicle Number:</td>
+             <td>{{visitor.veh}}</td>
+           </tr>
+           <tr>
+             <td>Purpose of Visit:</td>
+             <td>{{visitor.purpose}}</td>
+           </tr>
+           <tr>
+             <td>Destination:</td>
+             <td>{{visitor.dest}}</td>
+           </tr>
+           <tr>
+             <td>CheckIn Time:</td>
+             <td>{{visitor.time_in}}</td>
+           </tr>
+
+           {%if visitor.status_in%}
+	       		<tr>
+	             <td>CheckOut Time:</td>
+	             <td>Not Yet</td>
+	           </tr>
+	           </table>
+	           </div>
+	           </div>
+	           <div class="btn-group" style="width:94%">
+		         <button style="width:50%"><a style="display: block; color: white;" href="{%url 'visitor:check_out' visitor.id%}">CheckOut</a></button>
+		         <button style="width:50%"><a style="display: block; color: white;" href="{%url 'visitor:print' visitor.id%}">Print</a></button>  </div>
+           {%else%}
+	           	<tr>
+	             <td>CheckOut Time:</td>
+	             <td>{{visitor.time_out}}</td>
+	           </tr>
+	           	</table>
+	           	</div>
+	           	</div>
+	           	<div class="btn-group" style="width:94%">
+		         <button style="width:100%"><a style="display: block; color: white;" href="{%url 'visitor:print' visitor.id%}">Print</a></button> 
+		      </div>
+           {%endif%}      
+  </div>
+</body>
+{%endblock%}

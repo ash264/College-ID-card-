@@ -1,0 +1,99 @@
+{%extends 'visitor/base.html'%}
+{%load static%}
+
+{%block content%}
+<form action="{%url 'visitor:checkedin_list'%}" method="POST">
+	{%csrf_token%}
+	<input type="text" name="name" placeholder="Name">
+	<input type="text" name="id_no" placeholder="ID Number">
+	<input type="text" name="mob_no" placeholder="Mobile Number">
+	<input type="datetime-local" name="time_in" value="2018-06-12T19:30">
+	<input type="datetime-local" name="time_out" value="2019-03-12T19:32">
+	<input type="submit"  value="submit">
+</form>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <style>
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+  .row { margin: 0; padding: 0 }
+      * {
+          box-sizing: border-box;
+        }
+      
+  table {
+        width:100%;
+  }
+      
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+
+}
+
+th, td {
+  padding: 10px;
+  text-align: centre;
+}
+table#mydata tr:nth-child(even) {
+  background-color: #eee;
+}
+table#mydata tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#mydata th {
+  opacity: 0.7;
+  background-color: black;
+  color: white;
+}
+      
+    </style>
+</head>
+    
+    <table class="table-bordered table table-hover" id="mydata">
+        <thead>
+            <tr>
+                <th>Name</th>
+        				<th>ID Type</th>
+        				<th>ID No.</th>
+        				<th>Mob. No.</th>
+        				<th>Check In Time</th>
+        				<th>Check Out</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        {%for v in visitors%}
+					<tr>
+						<td><a href="{%url 'visitor:detail' v.id%}">{{v.name}}</a></td>
+						<td><a href="{%url 'visitor:detail' v.id%}">{{v.id_type}}</a></td>
+						<td><a href="{%url 'visitor:detail' v.id%}">{{v.id_no}}</a></td>
+						<td><a href="{%url 'visitor:detail' v.id%}">{{v.mob}}</a></td>
+						<td><a href="{%url 'visitor:detail' v.id%}">{{v.time_in}}</a></td>
+						<td><a href="{%url 'visitor:detail' v.id%}">Not yet check out</a></td>
+					</tr>
+				{%endfor%}
+            
+        </tbody>
+    </table>
+    <script>
+        
+        $('#mydata').dataTable();
+    </script>
+    <br/>
+    <br/>
+{%endblock%}

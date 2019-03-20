@@ -1,0 +1,87 @@
+{%extends 'card/base.html'%}
+{% load staticfiles %}
+
+<!-- Meta tag Keywords -->
+<!-- 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script> -->
+<!-- Meta tag Keywords -->
+<!-- <link href="{%static 'card/css/style.css'%}" rel="stylesheet" type="text/css" media="all" /> -->
+<!-- js -->
+<!-- //js -->
+<!-- web-fonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> -->
+<!-- //web-fonts --> 
+<!-- </head>
+<body>
+<div class="video"> 
+	<div class="center-container">
+	    <div class="w3ls-agileinfo">
+			<h1>Add New student</h1>	
+		</div>
+		 <div class="bg-agile">
+			<h2 style="color: black;">Login Here!</h2>
+			<div class="login-form">	
+				<form role="form" class="form-horizontal" method="post" action="">
+					{% csrf_token %}
+				    <div class="form-group">
+				        {% for field in form %}
+				            <div class="input-group">
+				                <span class="input-group-addon" style="background-color:#b77b48; color:white"><span class="glyphicon glyphicon-user"></span></span>
+				                <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}"  type="text" placeholder="{{ field.html_name }}"/> 
+				                {{ field.errors }}
+				            </div>
+				        {% endfor %}
+				        	<input type="submit" class="btn btn-primary" value="login" />
+				    </div>
+				</form>
+			</div>	
+		</div>
+	</div>	
+</div>	
+</body>
+</html>
+ -->---------------------------------------------------------------------------------------------
+
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>ID-CARD</title>
+<body>
+    <div class="fulll">
+    <div class="container">
+        <div class="card card-container" style="padding-top: 25px;">
+            <h2 style="text-align: center; margin-top: 0px;">Admin Login</h2>
+            <br/>
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" method="post" action="">{% csrf_token %}
+                <span id="reauth-email" class="reauth-email"></span>
+                 {% for field in form %}
+				                <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{ field.html_name }}"  type="text" placeholder="{{ field.html_name }}" required autofocus/> 
+				                {{ field.errors }}
+				        {% endfor %}
+                <!-- <input type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> -->
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+   </div>
+
+{% endblock content %}
+</body>
+</html>

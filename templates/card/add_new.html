@@ -1,0 +1,284 @@
+{%extends 'card/base.html'%}
+{%load static%}
+{% block active%}
+      <li><a href="{%url 'index'%}"><i class="fas fa-home"></i>&ensp; Home</a></li>
+      <li><a href="{%url 'list_student'%}"><i class="fas fa-graduation-cap"></i>&ensp; Student</a></li>
+      <li><a href="{%url 'list_employee'%}"><i class="fas fa-chalkboard-teacher"></i>&ensp;Faculty</a></li>
+      <li class="active"><a href="{%url 'add_new'%}"><i class="fa fa-address-card-o"></i>Register</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#">Visitor
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu ">
+          <li><a href="{%url 'visitor:register'%}">Add new</a></li>
+          <li><a href="{%url 'visitor:checkedin_list'%}">Checked In</a></li>
+          <li><a href="{%url 'visitor:list'%}">Checked Out</a></li>
+        </ul>
+      </li>
+    </ul>
+  {% endblock active %}
+{%block content%}
+<head>
+  <title>Register</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <style>
+      body{
+	background-color: #FFF;   
+}
+
+.vertical-offset-100{
+	padding-top:100px;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+	background-color: #2F2F2F;
+}
+
+.grow {
+	transition: all .2s ease-in-out;
+}
+.grow:hover {
+	transform: scale(1.1);
+}
+.imgWrap {
+	position: relative;
+	height: 130px;
+	width: 130px;
+}
+
+.imgDescription {
+	position: absolute;
+	top: 90px;
+	bottom: 0;
+	left: 0;
+	right: 0px;
+	
+	color: black;
+
+
+    visibility: hidden;
+	opacity: 0;
+
+}
+
+
+.imgWrap:hover .imgDescription {
+	visibility: visible;
+	opacity: 1;
+}
+      /*
+ * Globals
+ */
+
+/* Links */
+
+a:focus,
+a:hover {
+  color: #fff;
+}
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+body {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding-top: 50px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  margin-right: 50px
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+	margin-top:500px  
+	
+  font-weight: bold;
+}
+
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
+
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 700px;
+  }
+}
+
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+      .row { margin: 0; padding: 0 }
+    </style>
+</head>
+<body>    
+    
+    <div style="color: black;text-align: left;" class="container">
+        <h2>Choose one to proceed further</h2>
+    </div>
+    <br/>
+    <div class="inner cover">
+          <!--<p class="lead">
+            <a href="#" class="btn btn-lg btn-default">About us</a>
+          </p> -->
+          <div class="col-sm-3"></div>
+          <div class="col-sm-3">
+            <a href="{%url 'new_student' %}" class="imgWrap"> <img class="blah grow" src="{% static 'card/images/student.png' %}" alt="Fireworks" style="width:150px;height:150px;right:50%"><p class="imgDescription">Student</p> </a>
+          </div>
+          <div class="col-sm-3">
+            <a href="{%url 'new_employee' %}" class="imgWrap"><img class="grow" src="{% static 'card/images/faculty.png' %}" alt="Fireworks" style="width:150px;height:150px;right:50%"> <p class="imgDescription">Faculty</p> </a>
+          </div>
+          <div class="col-md-3"></div>
+    </div>
+</body>
+{% endblock %}

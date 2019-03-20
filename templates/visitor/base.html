@@ -1,0 +1,237 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="image/png" href="{% static 'card/images/iiitm.png' %}"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <style>
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+      .row { margin: 0; padding: 0 }
+
+     .fulll{
+    margin-top: 0px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*
+ * Card component
+ */
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin {
+    /*background-color: #4d90fe; */
+    background-color: rgb(104, 145, 162);
+    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    background-color: rgb(12, 97, 33);
+}
+
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus{
+    color: rgb(12, 97, 33);
+}
+
+    </style>
+</head>
+<body>
+    
+  <script type="text/javascript">
+        $('#myCarousel').carousel();
+        var winWidth = $(window).innerWidth();
+        $(window).resize(function () {
+
+            if ($(window).innerWidth() < winWidth) {
+                $('.carousel-inner>.item>img').css({
+                    'min-width': winWidth, 'width': winWidth
+                });
+            }
+            else {
+                winWidth = $(window).innerWidth();
+                $('.carousel-inner>.item>img').css({
+                    'min-width': '', 'width': ''
+                });
+            }
+        });
+  </script>
+
+<nav style="margin-top: 0px;" class="navbar navbar-default navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand" href="{%url 'index'%}">ID Card Portal</a>
+    </div>
+      
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+    <li><a href="{%url 'index'%}"><i class="fas fa-home"></i>&ensp; Home</a></li>
+      <li><a href="{%url 'list_student'%}"><i class="fas fa-graduation-cap"></i>&ensp; Student</a></li>
+      <li><a href="{%url 'list_employee'%}"><i class="fas fa-chalkboard-teacher"></i>&ensp;Faculty</a></li>
+      <li><a href="{%url 'add_new'%}"><i class="fa fa-address-card-o"></i>Register</a></li>
+      <li class="dropdown active">
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#">Visitor
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu ">
+          <li><a href="{%url 'visitor:register'%}">Add new</a></li>
+          <li><a href="{%url 'visitor:checkedin_list'%}">Checked In</a></li>
+          <li><a href="{%url 'visitor:list'%}">Checked Out</a></li>
+        </ul>
+      </li>
+    </ul>
+
+      
+    <ul class="nav navbar-nav navbar-right">
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'logout' %}?next={% url 'index' %}"><i class="fas fa-sign-out-alt"></i>&ensp; Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i>&ensp; Login</a></li>
+      {% endif %}
+      
+    </ul>
+  </div>
+</div>
+</nav>
+<div class="row">
+        <div class="col-lg-4"><a href=""> <img src="{% static 'card/images/logo-english.png' %}"></a></div>
+        <div class="col-lg-4"><a href=""><h2 style="font-family:cursive; color: #192150;">Online Card Generating Portal</h2></a></div>
+        <div class="col-lg-4"><a href=""><img src="{% static 'card/images/logo-hindi.png' %}"></a></div>
+</div>
+<hr/>
+ {%block content%}
+  {%endblock%}
+    
+</body>
+</html>

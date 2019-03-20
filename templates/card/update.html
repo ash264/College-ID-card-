@@ -1,0 +1,118 @@
+{%extends 'card/base.html'%}
+{%load static%}
+{% block active%}
+      <li><a href="{%url 'index'%}"><i class="fas fa-home"></i>&ensp; Home</a></li>
+      <li class="active"><a href="{%url 'list_student'%}"><i class="fas fa-graduation-cap"></i>&ensp; Student</a></li>
+      <li><a href="{%url 'list_employee'%}"><i class="fas fa-chalkboard-teacher"></i>&ensp;Faculty</a></li>
+      <li><a href="{%url 'add_new'%}"><i class="fa fa-address-card-o"></i>Register</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#">Visitor
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu ">
+          <li><a href="{%url 'visitor:register'%}">Add new</a></li>
+          <li><a href="{%url 'visitor:checkedin_list'%}">Checked In</a></li>
+          <li><a href="{%url 'visitor:list'%}">Checked Out</a></li>
+        </ul>
+      </li>
+    </ul>
+  {% endblock active %}
+{%block content%}
+
+<head>
+	<title>Update Student</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+  <style>
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+      .row { margin: 0; padding: 0 }
+    </style>
+    
+    <script>
+        $( function() {
+        $( "#datepicker" ).datepicker();
+        } );
+        $( function() {
+        $( "#datepicker1" ).datepicker();
+        } );
+        $( function() {
+        $( "#datepicker2" ).datepicker();
+        } );
+        
+    </script>
+    
+</head>
+<body>
+
+    <div class="container jumbotron" style="width: 40%;">
+    	<h2 style="text-align: center; font-weight: bold;"><i class="fas fa-id-card"></i>&ensp;&ensp;Update Details</h2>
+        <form method="post" enctype="multipart/form-data">
+        	{% csrf_token %}
+            
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-sm-6">
+                    <label for="roll_no">Roll number</label>
+                    {{form.roll_no}}
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputname">Name</label>
+                    {{form.name}}
+                </div>
+                <div class="col-sm-6">
+                    <label for="inputname">Father's name</label>
+                    {{form.father_name}}
+                </div>
+                
+                <div class="col-sm-6">
+                    <label for="dob">DOB</label>
+                    {{form.dob}}
+                </div>
+                
+                <div class="col-sm-6">
+                    <label for="programme">Programme</label>
+                    {{form.programme}}
+                </div>
+                
+                <div class="col-sm-6">
+                    <label for="blood_group">Blood group</label>
+                    {{form.blood_group}}
+                </div>
+                
+                <div class="col-sm-6">
+                    <label for="issue">Issued on</label>
+                    {{form.issued_on}}
+                </div>
+                <div class="col-sm-6">
+                    <label for="valid">Valid upto</label>
+                    {{form.valid_upto}}
+                </div>
+                <div class="col-sm-6">
+                    <label for="photo">Photo</label>
+                    {{form.pic}}
+                 </div>       
+                <div class="col-sm-12"  style="text-align: center;margin-top: 30px;">	
+                    <button type="submit" class="btn btn-primary" style="width: 50%;">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

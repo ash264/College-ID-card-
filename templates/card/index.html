@@ -1,0 +1,78 @@
+{%extends 'card/base.html'%}
+{% load staticfiles %}
+{% block active%}
+      <li class="active"><a href="{%url 'index'%}"><i class="fas fa-home"></i>&ensp; Home</a></li>
+      <li><a href="{%url 'list_student'%}"><i class="fas fa-graduation-cap"></i>&ensp; Student</a></li>
+      <li><a href="{%url 'list_employee'%}"><i class="fas fa-chalkboard-teacher"></i>&ensp;Faculty</a></li>
+      <li><a href="{%url 'add_new'%}"><i class="fa fa-address-card-o"></i>Register</a></li>
+      <!-- <li><a href="{%url 'visitor:register'%}"><i class="fa fa-address-card-o"></i>Visitor</a></li> -->
+      <li class="dropdown ">
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#">Visitor
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu ">
+          <li><a href="{%url 'visitor:register'%}">Add new</a></li>
+          <li><a href="{%url 'visitor:checkedin_list'%}">Checked In</a></li>
+          <li><a href="{%url 'visitor:list'%}">Checked Out</a></li>
+        </ul>
+      </li>        
+    </ul>
+{% endblock active%}
+{%block content%}
+<head><title>Home</title></head>
+
+
+  <div id="myCarousel" class="carousel slide" >
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="" contenteditable="false"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="active" contenteditable="false"></li>
+        <li data-target="#myCarousel" data-slide-to="2" class="" contenteditable="false"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item" style="">
+            <img src="{% static 'card/images/slide1.jpg' %}" alt="" class="img-responsive">
+            <div class="carousel-caption">
+                <h4 class="">First Slide Title</h4>
+                <p class="">
+                   Description for First Slide, this First Slide.
+                </p>
+            </div>
+        </div>
+        <div class="item active">
+            <img src="{% static 'card/images/slide2.jpg' %}" alt="" class="img-responsive">
+            <div class="carousel-caption">
+                <h4 class="">Second Slide Title</h4>
+
+                <p class="">
+                   Description for Second Slide, this is Second Slide.
+                </p>
+            </div>
+        </div>
+        <div class="item" style="">
+            <img src="{% static 'card/images/slide3.jpg' %}" alt="" class="img-responsive">
+            <div class="carousel-caption">
+                <h4 class="">Third Slide Title</h4>
+
+                            <p class="">
+                   Description for Third Slide, this is Third Slide.
+                </p>
+            </div>
+        </div>
+    </div>    
+
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+<div>
+   <p> Sample text #1:</p>
+
+<p>Welcome to our website, where you'll find a wealth of information in the form of newsletter articles, calculators, and research reports.</p>
+
+<p>We hope your visit will help you understand the opportunities and potential rewards that are available when you take a proactive approach to your personal financial situation. [Company] created this website to help you gain a better understanding of the financial concepts behind insurance, investing, retirement, estate planning, and wealth preservation. Most importantly, we hope you see the value of working with skilled professionals to pursue your financial goals. We're here to help educate you about the basic concepts of financial planning, to help you learn more about who we are, and to give you fast, easy access to market performance and data. We hope you take advantage of this resource and visit us often. Be sure to add our site to your list of "favorites" in your Internet browser. We frequently update our information, and we wouldn't want you to miss any developments in the area of personal finance.</p>
+
+</div>
+{%endblock%}

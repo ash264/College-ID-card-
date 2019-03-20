@@ -1,0 +1,143 @@
+{%extends 'card/base.html'%}
+{% block active%}
+      <li><a href="{%url 'index'%}"><i class="fas fa-home"></i>&ensp; Home</a></li>
+      <li><a href="{%url 'list_student'%}"><i class="fas fa-graduation-cap"></i>&ensp; Student</a></li>
+      <li class="active"><a href="{%url 'list_employee'%}"><i class="fas fa-chalkboard-teacher"></i>&ensp;Faculty</a></li>
+      <li><a href="{%url 'add_new'%}"><i class="fa fa-address-card-o"></i>Register</a></li>
+      <li class="dropdown ">
+        <a class="dropdown-toggle " data-toggle="dropdown" href="#">Visitor
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu ">
+          <li><a href="{%url 'visitor:register'%}">Add new</a></li>
+          <li><a href="{%url 'visitor:checkedin_list'%}">Checked In</a></li>
+          <li><a href="{%url 'visitor:list'%}">Checked Out</a></li>
+        </ul>
+      </li>
+    </ul>
+  {% endblock active %}
+{%block content%}
+
+<head>
+  <title>{{employee_detail.name}}</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <style>
+      .card {
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+ max-width: 45%;
+ margin: auto;
+ text-align: center;
+ font-family: arial;
+}
+
+.title {
+ color: grey;
+ font-size: 18px;
+}
+
+/*a {
+ text-decoration: none;
+ font-size: 22px;
+ color: black;
+}*/
+
+button:hover, a:hover {
+ opacity: 0.7;
+ text-decoration: none;
+ color: #fff;
+}
+
+
+.btn-group button {
+ font-size: 18px;
+ background-color: #000; /* Green background */
+ border: 1px solid grey; /* Green border */
+ color: white; /* White text */
+ padding: 10px 24px; /* Some padding */
+ cursor: pointer; /* Pointer/hand icon */
+ float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+ content: "";
+ clear: both;
+ display: table;
+}
+
+.btn-group button:not(:last-child) {
+ border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+ opacity: 0.7;
+}
+
+      
+      body { 
+        padding-top: 51px; 
+      }
+          .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+        display: block;
+        height: 450px;
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+        line-height: 1;
+    }
+      
+      .row { margin: 0; padding: 0 }
+    </style>
+</head>
+<body>
+  <div class="card" style="border-style: solid; border-color: black; border-width: 1px;border-radius: 4px;" >
+    <div id="print-card">
+       <img src="../media/{{MEDIA_URL}}{{employee_detail.pic}}" alt="image not found" style="border-radius: 50%; margin-top: 3%; width:150px; height:150px; border-style: solid; border-color: black; border-width: 1px;" />
+       <h2 style="font-family: Times New Roman;">{{employee_detail.name}}</h2>
+       <div class="w3-container">
+         <table class="w3-table-all w3-hoverable tb1">
+           <tr>
+             <td>Employee ID:</td>
+             <td>{{employee_detail.e_id}}</td>
+           </tr>
+           <tr>
+             <td>Date Of Birth:</td>
+             <td>{{employee_detail.dob}}</td>
+           </tr>
+           <tr>
+             <td>Designation:</td>
+             <td>{{employee_detail.designation}}</td>
+           </tr>
+           <tr>
+             <td>Blood Group:</td>
+             <td>{{employee_detail.blood_group}}</td>
+           </tr>
+           <tr>
+             <td>Valid Upto:</td>
+             <td>{{employee_detail.valid_upto}}</td>
+           </tr>
+           <tr>
+             <td>Issued On:</td>
+             <td>12/12/12</td>
+           </tr>
+           <tr>
+             <td>Generate Barcode</td>
+             <td><a href="{% url 'barcode' employee_detail.e_id %}">Click here</a></td>
+           </tr>
+         </table>
+         <img src="../media/{{MEDIA_URL}}images/sign.png" style="width:20%;" alt="sign">
+      </div> 
+    </div>
+         <div class="btn-group" style="width:100%">
+         <button style="width:33.3%"><a style="display: block; color: white;" href="{% url 'update_employee' employee_detail.e_id %}">Update</a></button>
+         <button style="width:33.3%"><a style="display: block; color: white;" href="{% url 'delete_employee' employee_detail.e_id %}">Delete</a></button>
+         <button style="width:33.3%"><a style="display: block; color: white;" href="{% url 'print_employee' employee_detail.e_id %}">Print</a></button>      
+      </div>      
+  </div>
+</body>
+</html>
+{%endblock%}

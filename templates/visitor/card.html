@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+    <style type="text/css">
+    @page {
+       size: 370px 270px;
+       margin: 0px 0px 0px 0px;
+        }
+        table{
+            border-style: solid;
+            border-width: 1px;
+        }
+        table
+        {
+            border-radius: 10px;
+            width: 370px;
+            height: 220px;
+            padding: 10px;
+            margin: 3px;
+        }
+        td{
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+            width: 110px;
+        }
+        tr{
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+        }
+        .details{
+            font-size: 10px;
+        }
+        
+        .details
+        {
+            height: 14px;
+        }
+        .header
+        {
+            font-size: 10px;
+            text-align: center;
+            background-color: yellow;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<table cellspacing="0px" cellpadding="0px" style="border-radius: 10px;">
+    <tr class="header" style="border-top-left-radius: 10px; "><td rowspan="3" style="border-top-left-radius: 10px; background-color: yellow;"><img style="height: 120px; width: 160px;"src="../media/{{MEDIA_URL}}images/iiit.png" width=100%></td>
+        <td style="border-top-right-radius: 10px; background-color: yellow;" colspan="3">Atal Bihari Vajpayee-</td>
+    </tr>
+    <tr class="header"><td colspan="3" style="font-size: 8px; background-color: yellow;">Indian Institute of Information Technology and Management, Gwalior</td></tr>
+    <tr class="header"><td colspan="3" style="font-size: 16px; background-color: yellow; ">Visitor Card</td></tr>
+    <tr class="details">
+        <td style=>Name: </td>
+        <td colspan="2">: {{visitor.name}}</td>
+        <td rowspan="5"><img src="{{visitor.pic}}" alt="image not found" style="height: 220px; width: 260px;"></td>    
+    </tr>
+    <tr class="details">
+        <td >S/D/W/O: </td>
+        <td colspan="2">: {{visitor.name_2}}</td>
+    </tr>
+        <tr class="details">
+           <td>Address: </td>
+           <td colspan="2">: {{visitor.address}}</td>
+        </tr>
+        <tr class="details">
+           <td>ID No.: </td>
+           <td colspan="2">: {{visitor.id_no}}</td>
+        </tr>
+        <tr class="details">
+           <td>ID Type: </td>
+           <td colspan="2">: {{visitor.id_type}}</td>
+        </tr>
+        <tr class="details">
+           <td>Mobile :</td>
+           <td colspan="2">: {{visitor.mob}}</td>
+        </tr>
+        <tr class="details">
+           <td>Vehicle No: </td>
+           <td colspan="2">: {{visitor.veh}}</td>
+        </tr>
+
+        <tr class="details">
+           <td>Purpose: </td>
+           <td colspan="2">: {{visitor.purpose}}</td>
+        </tr>
+        <tr class="details">
+           <td>Destination: </td>
+           <td colspan="2">{{visitor.dest}}</td>
+           <td rowspan="3"><img src="../media/{{MEDIA_URL}}images/sign.png" style="height: 70px; width: 160px;"></td>
+        </tr>
+        <tr class="details">
+           <td>Time In: </td>
+           <td colspan="2">: {{visitor.time_in}}</td>
+        </tr>
+        <tr class="details">
+           <td>Time Out: </td>
+           {%if visitor.status_in%}
+           <td colspan="2">: Not Yet Check Out</td>
+           {%else%}
+           <td colspan="2">: {{visitor.time_out}}</td>
+           {%endif%}
+        </tr>
+
+</table>
+
+</body>
+</html>

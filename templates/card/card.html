@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+    <style type="text/css">
+    @page {
+       size: 370px 220px;
+       margin: 0px 0px 0px 0px;
+        }
+        table{
+            border-style: solid;
+            border-width: 1px;
+        }
+        table
+        {
+            border-radius: 10px;
+            width: 370px;
+            height: 220px;
+            padding: 10px;
+            margin: 3px;
+        }
+        td{
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+            width: 110px;
+        }
+        tr{
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+        }
+        .details{
+            font-size: 10px;
+        }
+        
+        .details
+        {
+            height: 14px;
+        }
+        .header
+        {
+            font-size: 10px;
+            text-align: center;
+            background-color: yellow;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+<table cellspacing="0px" cellpadding="0px" style="border-radius: 10px;">
+    <tr class="header" style="border-top-left-radius: 10px; "><td rowspan="3" style="border-top-left-radius: 10px; background-color: yellow;"><img style="height: 120px; width: 160px;"src="../media/{{MEDIA_URL}}images/iiit.png" width=100%></td>
+        <td style="border-top-right-radius: 10px; background-color: yellow;" colspan="3">Atal Bihari Vajpayee-</td>
+    </tr>
+    <tr class="header"><td colspan="3" style="font-size: 8px; background-color: yellow;">Indian Institute of Information Technology and Management, Gwalior</td></tr>
+    <tr class="header"><td colspan="3" style="font-size: 8px; background-color: yellow; ">(An Autonomous Institute of MHRD,Government of India) </td></tr>
+    <tr class="details">
+        <td style=>Roll No</td>
+        <td colspan="2">: {{student.roll_no}}</td>
+        <td rowspan="5"><img src="../media/{{MEDIA_URL}}{{student.pic}}" alt="image not found" style="height: 120px; width: 160px;"></td>    
+    </tr>
+    <tr class="details">
+        <td >Name</td>
+        <td colspan="2">: {{student.name}}</td>
+    </tr>
+        <tr class="details">
+           <td>Father Name</td>
+           <td colspan="2">: {{student.father_name}}</td>
+        </tr>
+        <tr class="details">
+           <td>DOB</td>
+           <td colspan="2">: {{student.dob}}</td>
+        </tr>
+        <tr class="details">
+           <td>Programme</td>
+           <td colspan="2">: {{student.programme}}</td>
+        </tr>
+        <tr class="details">
+           <td>Blood Group</td>
+           <td colspan="2">: {{student.blood_group}}</td>
+            <td rowspan="3"><img src="../media/{{MEDIA_URL}}images/sign.png" style="height: 70px; width: 160px;"></td>
+        </tr>
+        <tr class="details">
+           <td>Valid Upto</td>
+           <td colspan="2">: {{student.valid_upto}}</td>
+        </tr>
+        <tr class="details">
+           <td>Issued On</td>
+           <td colspan="2">: {{student.issued_on}}</td>
+        </tr>
+        <tr class="details">
+           <td>Bar code</td>
+           <td colspan="2">:<img src="../media/{{MEDIA_URL}}barcodes/{{student.roll_no}}.png" style="height: 70px; width: 160px;"></td>
+        </tr>
+</table>
+
+</body>
+</html>
